@@ -1,0 +1,104 @@
+-- USERS  사용자
+INSERT INTO users (emp_no, email, department_id, position_id, role, name, password_hash, birth_date, phone_no, status, address, zipcode, hire_date, resign_date, bank_name, bank_account, account_holder, created_at, updated_at) VALUES
+('EMP001', 'kim.admin@example.com', 1, 6, 'ADMIN', '김관리', 'hashed_password_admin1', '1985-01-15', '010-1111-2222', 'ACTIVE', '서울시 강남구 테헤란로 123', '06130', '2010-03-01', NULL, '신한은행', '110-123-456789', '김관리', NOW(), NOW()),
+('EMP002', 'lee.dev@example.com', 2, 3, 'EMPLOYEE', '이개발', 'hashed_password_dev2', '1990-05-20', '010-2222-3333', 'ACTIVE', '경기도 성남시 분당구 판교역로 333', '13487', '2015-07-10', NULL, '국민은행', '220-345-678901', '이개발', NOW(), NOW()),
+('EMP003', 'park.mkt@example.com', 3, 2, 'MANAGER', '박마케', 'hashed_password_mkt3', '1992-09-01', '010-3333-4444', 'ACTIVE', '부산시 해운대구 마린시티2로 77', '48092', '2018-01-05', NULL, '우리은행', '1002-345-678901', '박마케', NOW(), NOW()),
+('EMP004', 'choi.sales@example.com', 4, 1, 'EMPLOYEE', '최영업', 'hashed_password_sales4', '1995-11-25', '010-4444-5555', 'ACTIVE', '대구시 중구 동성로 10', '41940', '2020-02-14', NULL, '하나은행', '990-123456-789', '최영업', NOW(), NOW()),
+('EMP005', 'jung.acc@example.com', 5, 4, 'EMPLOYEE', '정회계', 'hashed_password_acc5', '1988-03-10', '010-5555-6666', 'ACTIVE', '인천시 연수구 송도과학로 16', '21984', '2013-09-22', NULL, '농협은행', '302-1234-5678-90', '정회계', NOW(), NOW()),
+('EMP006', 'seo.prd@example.com', 6, 2, 'EMPLOYEE', '서생산', 'hashed_password_prd6', '1993-07-07', '010-6666-7777', 'ACTIVE', '광주시 서구 상무대로 88', '61947', '2019-04-01', NULL, '기업은행', '013-456789-01-234', '서생산', NOW(), NOW()),
+('EMP007', 'ahn.rnd@example.com', 7, 5, 'EMPLOYEE', '안연구', 'hashed_password_rnd7', '1987-02-28', '010-7777-8888', 'ACTIVE', '대전시 유성구 대학로 99', '34136', '2012-08-15', NULL, '우체국', '7001-0123-4567-89', '안연구', NOW(), NOW()),
+('EMP008', 'jo.cs@example.com', 8, 1, 'EMPLOYEE', '조고객', 'hashed_password_cs8', '1996-04-05', '010-8888-9999', 'ACTIVE', '울산시 남구 삼산로 100', '44677', '2021-06-01', NULL, '케이뱅크', '100-234-567890', '조고객', NOW(), NOW()),
+('EMP009', 'hwang.adm@example.com', 9, 3, 'EMPLOYEE', '황총무', 'hashed_password_adm9', '1991-08-12', '010-9999-0000', 'ACTIVE', '세종시 한누리대로 111', '30113', '2017-11-01', NULL, '카카오뱅크', '3333-01-2345678', '황총무', NOW(), NOW()),
+('EMP010', 'ryu.plan@example.com', 10, 4, 'EMPLOYEE', '류기획', 'hashed_password_plan10', '1989-10-30', '010-0000-1111', 'RESIGNED', '강원도 춘천시 중앙로 222', '24281', '2014-06-01', '2024-12-31', '신한은행', '110-987-654321', '류기획', NOW(), NOW());
+
+select * from users;
+--10건
+
+-- DEPARTMENT  부서 코드
+  INSERT INTO departments (dept_code, dept_name, description, created_at, updated_at) VALUES
+('HR', '인사팀', '직원 채용, 관리 및 복리후생 담당', NOW(), NOW()),
+('DEV', '개발팀', '소프트웨어 개발 및 유지보수', NOW(), NOW()),
+('MKT', '마케팅팀', '제품 홍보 및 시장 분석', NOW(), NOW()),
+('SALES', '영업팀', '제품 판매 및 고객 관리', NOW(), NOW()),
+('ACC', '회계팀', '재무 관리 및 예산 집행', NOW(), NOW()),
+('PRD', '생산팀', '제품 생산 및 품질 관리', NOW(), NOW()),
+('RND', '연구개발팀', '신기술 연구 및 제품 개발', NOW(), NOW()),
+('CS', '고객지원팀', '고객 문의 응대 및 서비스 제공', NOW(), NOW()),
+('ADM', '총무팀', '사내 시설 및 비품 관리', NOW(), NOW()),
+('PLAN', '기획팀', '사업 전략 수립 및 프로젝트 기획', NOW(), NOW());
+
+SELECT * FROM departments;  --10건
+
+-- POSITIONS 직급 코드
+INSERT INTO positions (position_name, position_level, description, created_at, updated_at) VALUES
+('주임', 1, '실무 담당자', NOW(), NOW()),
+('사원', 1, '신입 및 일반 사원', NOW(), NOW()),
+('대리', 2, '실무 리더', NOW(), NOW()),
+('과장', 3, '팀 관리 및 프로젝트 책임자', NOW(), NOW()),
+('차장', 4, '부서 중간 관리자', NOW(), NOW()),
+('부장', 5, '부서 총괄 관리자', NOW(), NOW()),
+('이사', 6, '임원진', NOW(), NOW()),
+('상무', 7, '고위 임원', NOW(), NOW()),
+('전무', 8, '최고 경영진', NOW(), NOW()),
+('대표', 9, '회사 대표', NOW(), NOW());
+
+SELECT * FROM positions; --10건
+
+-- ATTENDANCE 근태
+INSERT INTO attendance (user_id, leave_request_id, attendance_date, clock_in_time, clock_out_time, attendance_status, description, created_at, updated_at) VALUES
+(1, NULL, '2025-07-01', '2025-07-01 08:55:00', '2025-07-01 18:05:00', '출근', NULL, NOW(), NOW()),
+(2, NULL, '2025-07-01', '2025-07-01 09:02:00', '2025-07-01 18:00:00', '지각', '교통 체증', NOW(), NOW()),
+(3, NULL, '2025-07-01', '2025-07-01 08:58:00', '2025-07-01 18:30:00', '출근', NULL, NOW(), NOW()),
+(4, 3, '2025-07-01', NULL, NULL, '병가', '독감으로 인한 병가', NOW(), NOW()), -- leave_request_id 3 (병가)
+(5, NULL, '2025-07-01', '2025-07-01 08:50:00', '2025-07-01 17:55:00', '출근', NULL, NOW(), NOW()),
+(6, NULL, '2025-07-01', '2025-07-01 09:05:00', '2025-07-01 17:00:00', '조퇴', '병원 방문', NOW(), NOW()),
+(7, NULL, '2025-07-01', '2025-07-01 09:00:00', '2025-07-01 18:10:00', '출근', NULL, NOW(), NOW()),
+(8, NULL, '2025-07-01', '2025-07-01 08:45:00', '2025-07-01 18:00:00', '출근', NULL, NOW(), NOW()),
+(9, NULL, '2025-07-01', '2025-07-01 09:00:00', '2025-07-01 18:00:00', '출근', NULL, NOW(), NOW()),
+(10, NULL, '2025-07-01', '2025-07-01 09:10:00', '2025-07-01 18:00:00', '지각', '개인 사정', NOW(), NOW());
+
+select * from attendance;  --10건
+
+-- PERSONAL_LEAVE 개인연차(수정해야함.!)
+ INSERT INTO personal_leave (user_id, year, total_leave_days, used_leave_days, remain_leave_days, created_at, updated_at) VALUES
+(1, 2025, 15.0, 3.0, 12.0, NOW(), NOW()),
+(2, 2025, 15.0, 5.0, 10.0, NOW(), NOW()),
+(3, 2025, 15.0, 0.0, 15.0, NOW(), NOW()),
+(4, 2025, 15.0, 1.5, 13.5, NOW(), NOW()),
+(5, 2025, 15.0, 2.0, 13.0, NOW(), NOW()),
+(6, 2025, 15.0, 0.5, 14.5, NOW(), NOW()),
+(7, 2025, 15.0, 4.0, 11.0, NOW(), NOW()),
+(8, 2025, 15.0, 0.0, 15.0, NOW(), NOW()),
+(9, 2025, 15.0, 1.0, 14.0, NOW(), NOW()),
+(10, 2025, 15.0, 15.0, 0.0, NOW(), NOW());
+
+SELECT * FROM personal_leave;
+
+
+-- LEAVE_REQUEST 휴가 신청
+INSERT INTO leave_request (user_id, approval_id, leave_type, start_date, end_date, reason, leave_days_used, created_at, updated_at) VALUES
+(2, 1, 'ANNUAL', '2025-07-15', '2025-07-17', '여름 휴가', 3.0, NOW(), NOW()),
+(3, 2, 'BEREAVEMENT', '2025-07-20', '2025-07-22', '조모상', 3.0, NOW(), NOW()),
+(4, 3, 'SICK', '2025-07-01', '2025-07-01', '독감', 1.0, NOW(), NOW()),
+(5, 4, 'BUSINESS_TRIP', '2025-08-01', '2025-08-05', '해외 출장', 5.0, NOW(), NOW()),
+(6, 5, 'HALF_DAY_AM', '2025-07-10', '2025-07-10', '오전 반차', 0.5, NOW(), NOW()),
+(7, 6, 'ANNUAL', '2025-09-01', '2025-09-02', '개인 사정', 2.0, NOW(), NOW()),
+(8, 7, 'HALF_DAY_PM', '2025-07-11', '2025-07-11', '오후 반차', 0.5, NOW(), NOW()),
+(9, 8, 'ANNUAL', '2025-10-01', '2025-10-01', '가족 행사', 1.0, NOW(), NOW()),
+(10, 9, 'SICK', '2025-07-05', '2025-07-06', '편두통', 2.0, NOW(), NOW()),
+(2, 10, 'HALF_DAY_AM', '2025-07-25', '2025-07-25', '오전 반차', 0.5, NOW(), NOW());
+
+SELECT * FROM leave_request;  --10건
+
+-- APPROVALS  결재
+INSERT INTO approvals (requester_id, approver_id, approval_status, approval_name, approval_type, pending_time, approved_time, rejected_time, created_at, updated_at) VALUES
+(2, 1, 'APPROVED', '연차 신청', '휴가', '2025-06-01 09:00:00', '2025-06-01 10:00:00', NULL, NOW(), NOW()),
+(3, 1, 'PENDING', '경조사 휴가 신청', '휴가', '2025-06-02 11:30:00', NULL, NULL, NOW(), NOW()),
+(4, 1, 'REJECTED', '병가 신청', '휴가', '2025-06-03 14:00:00', NULL, '2025-06-03 15:00:00', NOW(), NOW()),
+(5, 1, 'APPROVED', '교육 훈련 결재', '업무', '2025-06-04 10:00:00', '2025-06-04 11:00:00', NULL, NOW(), NOW()),
+(6, 1, 'PENDING', '초과 근무 승인', '근태', '2025-06-05 09:00:00', NULL, NULL, NOW(), NOW()),
+(7, 1, 'APPROVED', '출장비 정산', '경비', '2025-06-06 13:00:00', '2025-06-06 14:00:00', NULL, NOW(), NOW()),
+(8, 1, 'PENDING', '비품 구매 요청', '물품', '2025-06-07 10:00:00', NULL, NULL, NOW(), NOW()),
+(9, 1, 'APPROVED', '주간 업무 보고서', '보고', '2025-06-08 09:30:00', '2025-06-08 10:30:00', NULL, NOW(), NOW()),
+(10, 1, 'REJECTED', '부서 회식 결재', '경비', '2025-06-09 16:00:00', NULL, '2025-06-09 17:00:00', NOW(), NOW()),
+(2, 1, 'PENDING', '반차 신청', '휴가', '2025-07-01 09:00:00', NULL, NULL, NOW(), NOW());
